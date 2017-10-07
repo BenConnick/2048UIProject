@@ -51,7 +51,7 @@ LocalStorageManager.prototype.setBestScore = function (score) {
 
 // Name getters/setters
 LocalStorageManager.prototype.getHighScoreName = function (name) {
-	return this.storage.getItem(this.nameKey, name);
+	return this.storage.getItem(this.nameKey, name) || "Best";
 }
 
 LocalStorageManager.prototype.setHighScoreName = function (name) {
