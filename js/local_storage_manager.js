@@ -21,6 +21,7 @@ window.fakeStorage = {
 function LocalStorageManager() {
   this.bestScoreKey     = "bestScore";
   this.gameStateKey     = "gameState";
+  this.nameKey			= "name";
 
   var supported = this.localStorageSupported();
   this.storage = supported ? window.localStorage : window.fakeStorage;
@@ -47,6 +48,15 @@ LocalStorageManager.prototype.getBestScore = function () {
 LocalStorageManager.prototype.setBestScore = function (score) {
   this.storage.setItem(this.bestScoreKey, score);
 };
+
+// Name getters/setters
+LocalStorageManager.prototype.getHighScoreName = function (name) {
+	return this.storage.getItem(this.nameKey, name);
+}
+
+LocalStorageManager.prototype.setHighScoreName = function (name) {
+	this.storage.setItem(this.nameKey, name);
+}
 
 // Game state getters/setters and clearing
 LocalStorageManager.prototype.getGameState = function () {

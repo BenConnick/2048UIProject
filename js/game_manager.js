@@ -10,6 +10,8 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
   this.inputManager.on("resetScore", this.resetScore.bind(this));
+  this.inputManager.on("cheat", this.cheat.bind(this));
+  this.inputManager.on("setHighScoreName", this.setHighScoreName.bind(this));
 
   this.setup();
 }
@@ -31,6 +33,19 @@ GameManager.prototype.keepPlaying = function () {
 GameManager.prototype.resetScore = function () {
 	this.storageManager.setBestScore(0);
 	this.actuator.updateBestScore(0);
+}
+
+// Jump straight to the end of the game
+GameManager.prototype.cheat = function () {
+	console.log("cheater");
+	this.over = true;
+	this.actuate();
+}
+
+// Enter a name into the high score area
+GameManager.prototype.setHighScoreName = function () {
+	this.storageManager.setHighScoreName(this.actuator.nameInput.value);
+	this.actuator.updateHighScoreName(this.storageManager.getHighScoreName());
 }
 
 // Return true if the game is lost, or has won and the user hasn't kept playing

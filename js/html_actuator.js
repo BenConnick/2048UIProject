@@ -3,6 +3,7 @@ function HTMLActuator() {
   this.scoreContainer   = document.querySelector(".score-container");
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
+  this.nameInput		= document.querySelector(".high-score-name");
 
   this.score = 0;
 }
@@ -126,10 +127,15 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : "Game over! \nScore: " + this.score;
+  var message = won ? "You win!" : "Game over! <br>Score: " + this.score;
+  var highScore = this.score == this.bestContainer.textContent;
+  console.log(highScore);
+  if (highScore) {
+	  this.messageContainer.classList.add("high-score-got");
+  }
 
   this.messageContainer.classList.add(type);
-  this.messageContainer.querySelector(".result").textContent = message;
+  this.messageContainer.querySelector(".result").innerHTML = message;
 };
 
 HTMLActuator.prototype.clearMessage = function () {
@@ -137,3 +143,9 @@ HTMLActuator.prototype.clearMessage = function () {
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
 };
+
+HTMLActuator.prototype.updateHighScoreName = function (newName) {
+  this.bestContainer.setAttribute("text",newName);
+  this.bestContainer.classList.add("changed");
+  this.nameInput.value = "";
+}

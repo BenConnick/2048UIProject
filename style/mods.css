@@ -5,25 +5,61 @@ Author: Ben Connick
 
 @keyframes victoryDance {
 	0% {transform: rotate(0deg);}
-	100% {transform: rotate(1080deg);}
+	80% {transform: rotate(1080deg);}
+	90% {transform: scale(1,1)}
+	100% {transform: scale(1.2,1.2);}
+}
+
+@keyframes nameZoom {
+	0% { transform: scale(1,1); color: #f2b179; }
+	20% { transform: scale(10,10); color: #f2b179; }
+	100% { transform: scale(1,1); color: #eee4da; }
+}
+
+h1.title {
+	font-sizE: 50px;
+}
+
+.best-container {
+	padding: 15px 60px;
+}
+
+.best-container.changed:after {
+  content: attr(text); 
+  animation: nameZoom 1s;
+}
+
+.game-container .game-message {
+	background-color: rgba(238, 228, 218, 0.8);
+}  
+  
+.game-message .new-high-score-message {
+	display: none;
+}
+
+.game-message.high-score-got .new-high-score-message {
+	display: inline-block;
 }
 
 .game-container .game-message .result {
 	position: relative;
 	top: 15px;
-	margin-top: 30px;
+	margin-top: 0px;
 	margin-bottom: 100px;
+	font-size: 36px;
 }
 
 .game-container .game-message .spin {
-	font-size: 45px;
+	font-size: 38px;
 	position: relative;
 	animation-name: victoryDance;
 	animation-timing-function: cubic-bezier(1,1.52,.75,.84);
 	animation-delay: 0.95s;
 	animation-duration: 1.25s;
+	animation-fill-mode: forwards;
 	font-weight: bold;
 	margin-top: 100px;
+	margin-bottom: 20px;
 }
 
 .reset-container {
@@ -53,12 +89,12 @@ Author: Ben Connick
 	border: none;
 	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
 	color: white;
-	font-size: 25px;
+	font-size: 18px;
 	font-weight: 600;
 }
 
 .game-container .game-message {
-    display: inline-block;
+    display: none;
 }
 
 .name-button {
@@ -81,3 +117,20 @@ Author: Ben Connick
 	border: 2px solid #8f7a66;
 	border-radius: 3px;
 }
+
+.cheat-button {
+	/*display: none;*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100px;
+	height: 100px;
+}
+
+.new-high-score-message {
+}
+
+.heading { 
+	margin-bottom: 10px;
+}
+
