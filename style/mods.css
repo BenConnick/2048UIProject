@@ -1,0 +1,83 @@
+/*
+Adding a high score screen to 2048
+Author: Ben Connick
+*/
+
+@keyframes victoryDance {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(1080deg);}
+}
+
+.game-container .game-message .result {
+	position: relative;
+	top: 15px;
+	margin-top: 30px;
+	margin-bottom: 100px;
+}
+
+.game-container .game-message .spin {
+	font-size: 45px;
+	position: relative;
+	animation-name: victoryDance;
+	animation-timing-function: cubic-bezier(1,1.52,.75,.84);
+	animation-delay: 0.95s;
+	animation-duration: 1.25s;
+	font-weight: bold;
+	margin-top: 100px;
+}
+
+.reset-container {
+  position: relative;
+  top: 8px;
+  display: inline-block;
+  background: #8f7a66;
+  padding: 15px 40px;
+  font-size: 25px;
+  height: 25px;
+  line-height: 47px;
+  font-weight: bold;
+  border-radius: 3px;
+  color: white;
+  text-align: center; 
+  margin-top: 8px;
+}
+
+.reset-container button {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0);
+	border: none;
+	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+	color: white;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.game-container .game-message {
+    display: inline-block;
+}
+
+.name-button {
+  display: inline-block;
+  background: #8f7a66;
+  height: 28px;
+  width: 42px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-align: center; 
+  border: none;
+  border-radius: 3px;
+}
+
+.high-score-name {
+	display: inline-block;
+	width: 200px;
+	height: 24px;
+	border: 2px solid #8f7a66;
+	border-radius: 3px;
+}
