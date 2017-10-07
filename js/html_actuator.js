@@ -39,6 +39,10 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 // Continues the game (both restart and keep playing)
 HTMLActuator.prototype.continueGame = function () {
   this.clearMessage();
+  // remove the animation from the name tag, so it can be reused
+  this.bestContainer.classList.remove("changed");
+  // remove high score announcement for next round
+  this.messageContainer.classList.remove("high-score-got");
 };
 
 HTMLActuator.prototype.clearContainer = function (container) {
@@ -127,10 +131,9 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : "Game over! <br>Score: " + this.score;
-  var highScore = this.score == this.bestContainer.textContent;
-  console.log(highScore);
-  if (highScore) {
+  var message = won ? "You win!" : "Game Over!<br>Score: " + this.score;
+  var highScoreGot = this.score == this.bestContainer.textContent;
+  if (highScoreGot) {
 	  this.messageContainer.classList.add("high-score-got");
   }
 
@@ -148,4 +151,8 @@ HTMLActuator.prototype.updateHighScoreName = function (newName) {
   this.bestContainer.setAttribute("text",newName);
   this.bestContainer.classList.add("changed");
   this.nameInput.value = "";
+}
+
+HTMLActuator.prototype.updateHighScoreNameSilent = function (newName) {
+  this.bestContainer.setAttribute("text",newName);
 }

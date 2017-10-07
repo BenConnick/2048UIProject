@@ -1,5 +1,8 @@
 function KeyboardInputManager() {
   this.events = {};
+  
+  // an input text field
+  this.nameInput = document.querySelector(".high-score-name");
 
   if (window.navigator.msPointerEnabled) {
     //Internet Explorer 10 style
@@ -54,6 +57,13 @@ KeyboardInputManager.prototype.listen = function () {
     var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
                     event.shiftKey;
     var mapped    = map[event.which];
+	
+	// Get a reference to the input field
+	if (this.nameInput == undefined) {
+		this.nameInput = document.querySelector(".high-score-name");
+	}
+	// When entering name, only use keystrokes for typing
+	if (document.activeElement == this.nameInput) {return;}
 
     if (!modifiers) {
       if (mapped !== undefined) {

@@ -92,9 +92,6 @@ h1.title {
 .score-container:after {
   content: "Score"; }
 
-.best-container:after {
-  content: "Best"; }
-
 p {
   margin-top: 0;
   margin-bottom: 10px;
@@ -750,9 +747,9 @@ hr {
     font-size: 35px; }
 
   .game-message p {
-    font-size: 30px !important;
-    height: 30px !important;
-    line-height: 30px !important;
-    margin-top: 90px !important; }
+    font-size: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 90px; }
   .game-message .lower {
-    margin-top: 30px !important; } }
+    margin-top: 30px; } }

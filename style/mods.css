@@ -24,8 +24,11 @@ h1.title {
 	padding: 15px 60px;
 }
 
+.best-container:after {
+	content: attr(text);
+}
+
 .best-container.changed:after {
-  content: attr(text); 
   animation: nameZoom 1s;
 }
 
@@ -127,10 +130,28 @@ h1.title {
 	height: 100px;
 }
 
-.new-high-score-message {
-}
-
 .heading { 
 	margin-bottom: 10px;
+}
+
+@media screen and (max-width: 520px) {
+	.game-container .game-message .spin {
+		font-size: 18px;
+		margin-top: 25px;
+		margin-bottom: 15px;
+	}
+	.game-container .game-message p.result {
+		top: 0px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		font-size: 16px;
+		line-height: 20px;
+	}
+	.game-container .game-message .lower {
+		margin-top: 10px;
+	}
+	.best-container {
+		padding: 15px 42px;
+	}
 }
 

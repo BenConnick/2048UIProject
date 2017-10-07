@@ -11,7 +11,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
   this.inputManager.on("resetScore", this.resetScore.bind(this));
   this.inputManager.on("cheat", this.cheat.bind(this));
-  this.inputManager.on("setHighScoreName", this.setHighScoreName.bind(this));
+  this.inputManager.on("setHighScoreName", this.setHighScoreNameFromInput.bind(this));
 
   this.setup();
 }
@@ -32,7 +32,9 @@ GameManager.prototype.keepPlaying = function () {
 // Reset the stored values for the high score
 GameManager.prototype.resetScore = function () {
 	this.storageManager.setBestScore(0);
+	this.storageManager.setHighScoreName("Best");
 	this.actuator.updateBestScore(0);
+	this.actuator.updateHighScoreNameSilent("Best");
 }
 
 // Jump straight to the end of the game
@@ -43,8 +45,8 @@ GameManager.prototype.cheat = function () {
 }
 
 // Enter a name into the high score area
-GameManager.prototype.setHighScoreName = function () {
-	this.storageManager.setHighScoreName(this.actuator.nameInput.value);
+GameManager.prototype.setHighScoreNameFromInput = function () {
+	this.storageManager.setHighScoreName(this.inputManager.nameInput.value);
 	this.actuator.updateHighScoreName(this.storageManager.getHighScoreName());
 }
 
@@ -75,6 +77,9 @@ GameManager.prototype.setup = function () {
     // Add the initial tiles
     this.addStartTiles();
   }
+  
+  // set the winner name
+  this.actuator.updateHighScoreNameSilent(this.storageManager.getHighScoreName());
 
   // Update the actuator
   this.actuate();
