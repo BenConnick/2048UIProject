@@ -55,6 +55,7 @@ LocalStorageManager.prototype.getHighScoreName = function (name) {
 }
 
 LocalStorageManager.prototype.setHighScoreName = function (name) {
+	if (name == "") return;
 	this.storage.setItem(this.nameKey, name);
 }
 

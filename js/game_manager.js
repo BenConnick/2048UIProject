@@ -18,6 +18,9 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
 // Restart the game
 GameManager.prototype.restart = function () {
+  if (this.inputManager.nameInput.value != "") {
+	this.setHighScoreNameFromInput();
+  }
   this.storageManager.clearGameState();
   this.actuator.continueGame(); // Clear the game won/lost message
   this.setup();
@@ -46,7 +49,10 @@ GameManager.prototype.cheat = function () {
 
 // Enter a name into the high score area
 GameManager.prototype.setHighScoreNameFromInput = function () {
+	console.log("set hs name")
 	this.storageManager.setHighScoreName(this.inputManager.nameInput.value);
+	console.log(this.inputManager.nameInput.value);
+	console.log(this.storageManager.getHighScoreName());
 	this.actuator.updateHighScoreName(this.storageManager.getHighScoreName());
 }
 

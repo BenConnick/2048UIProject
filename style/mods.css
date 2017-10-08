@@ -17,11 +17,11 @@ Author: Ben Connick
 }
 
 h1.title {
-	font-sizE: 50px;
+	font-sizE: 45px;
 }
 
 .best-container {
-	padding: 15px 60px;
+	padding: 15px 45px;
 }
 
 .best-container:after {
@@ -47,9 +47,13 @@ h1.title {
 .game-container .game-message .result {
 	position: relative;
 	top: 15px;
-	margin-top: 0px;
+	margin-top: 100px;
 	margin-bottom: 100px;
 	font-size: 36px;
+}
+
+.game-message.high-score-got .result {
+	margin-top: 0px;
 }
 
 .game-container .game-message .spin {
@@ -141,12 +145,13 @@ h1.title {
 		margin-bottom: 15px;
 	}
 	.game-container .game-message p.result {
-		top: 0px;
-		margin-top: 20px;
-		margin-bottom: 20px;
-		font-size: 16px;
-		line-height: 20px;
-	}
+		.game-container .game-message .result {
+		position: relative;
+		top: 15px;
+		margin-top: 100px;
+		margin-bottom: 100px;
+		font-size: 36px;
+	}	
 	.game-container .game-message .lower {
 		margin-top: 10px;
 	}
